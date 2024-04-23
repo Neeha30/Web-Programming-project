@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer Form</title>
+
+</head>
+<body>
+
+<div class="volunteer-form">
+  <h2>Volunteer Registration</h2>
+  <div class="form-group">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" placeholder="Enter your full name">
+  </div>
+  <div class="form-group">
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" placeholder="Enter your email address">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" placeholder="Enter your phone number">
+  </div>
+  <div class="form-group">
+    <label for="availability">Availability:</label>
+    <input type="text" id="availability" placeholder="Enter your availability">
+  </div>
+  <div class="form-group">
+    <label for="interests">Interests:</label>
+    <input type="text" id="interests" placeholder="Enter your interests">
+  </div>
+  <button id="submitBtn">Submit</button>
+</div>
+
+<style>
+    
+
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.volunteer-form {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.volunteer-form h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button#submitBtn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button#submitBtn:hover {
+  background-color: #0056b3;
+}
+</style>
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+  // Validate form fields
+  var isValid = validateForm();
+  if (isValid) {
+    // Send volunteer data to server or perform further actions
+    alert('Thank you for volunteering!');
+    // Clear form fields
+    document.getElementById('fullName').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('availability').value = '';
+    document.getElementById('interests').value = '';
+  }
+});
+
+function validateForm() {
+  var isValid = true;
+  var errorMessages = [];
+
+  // Validate required fields
+  var requiredFields = document.querySelectorAll('.form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"]');
+  requiredFields.forEach(function(field) {
+    if (field.value.trim() === '') {
+      isValid = false;
+      errorMessages.push('Please fill in all required fields.');
+    }
+  });
+
+  // Validate email format
+  var emailField = document.getElementById('email');
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(emailField.value.trim())) {
+    isValid = false;
+    errorMessages.push('Please enter a valid email address.');
+  }
+
+  // Additional validation can be added here
+
+  // Display error messages if any
+  if (!isValid) {
+    alert(errorMessages.join('\n'));
+  }
+
+  return isValid;
+}
+</script>
+</body>
+</html>

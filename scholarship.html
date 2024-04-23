@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Form</title>
+</head>
+<body>
+    <h1>Scholarship Application Form</h1>
+    <form id="scholarshipForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="gpa">GPA:</label>
+        <input type="number" id="gpa" name="gpa" min="0" max="4" step="0.01" required>
+
+        <button type="submit">Submit</button>
+    </form>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+    </style>
+
+    <script>
+        document.getElementById('scholarshipForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Retrieve form data
+    var fullName = document.getElementById('fullName').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var gpa = document.getElementById('gpa').value;
+
+    // Validate GPA (for example, minimum GPA requirement)
+    if (gpa < 3.0) {
+        alert('Minimum GPA requirement not met. GPA must be 3.0 or higher.');
+        return; // Prevent form submission if GPA requirement not met
+    }
+
+    // Submit the form data (you can send it to a server, for example)
+    // For demonstration purposes, we'll just log the data to the console
+    console.log('Full Name: ' + fullName);
+    console.log('Email: ' + email);
+    console.log('Phone: ' + phone);
+    console.log('GPA: ' + gpa);
+
+    // You can also add code here to send the data to a server using AJAX or fetch
+});
+    </script>
+</body>
+</html>
